@@ -29,7 +29,7 @@ classdef Bandit2_2
             obj.use_softmax = use_softmax;
             obj.temperature = 0.1;
         end
-        function [selind] = select_softmax(obj, eps)
+        function [selind] = select_softmax(obj)
             v = zeros(obj.numarms, 1);
             for i=1:obj.numarms
                 v(i) = exp(bandit_reward(obj.bandits_samples{i})/obj.temperature);

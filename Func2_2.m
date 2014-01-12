@@ -18,12 +18,13 @@ for n=1:numplays
     max_rew = -10000;
     for i=1:numarms
         v = bandit_reward(bandits_samples{i});
+        %fprintf(1, '%d: %f\n', i, v);
         if v > max_rew
             max_rew = v;
             selind = i;
         end
     end
-    
+    %fprintf(1, 'select %d\n', selind);
     % random selection
     if eps > rand(1,1)
         selind = randi(numarms, 1);
@@ -49,6 +50,6 @@ function [rew] = bandit_reward(samples)
     if size(samples) == 0
         rew = 0;
     else
-        rew = mean(samples) + randn();
+        rew = mean(samples);
     end
 end
